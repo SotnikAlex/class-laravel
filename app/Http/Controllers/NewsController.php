@@ -45,7 +45,7 @@ class NewsController extends Controller
             'title'=>'required|min:3|max:255',
             'content'=>'required|min:3',
             'category'=>'required',
-            'img'=>'mimes:jpeg,jpg,png,gif|required|max:2000'
+            'img'=>'mimes:jpeg,jpg,png,gif|max:2000'
         ]);
 
         $news = new News();
@@ -54,10 +54,12 @@ class NewsController extends Controller
         $news->category_id = $request->category;
         
          $file = $request->file('img');
+         if($file){ 
         $fileName = $file->getClientOriginalName();
         $file->move(public_path() . '/img', $fileName);
-        $news->img='/img/' . $fileName;
 
+        $news->img='/img/' . $fileName;
+        }
         $news->save();
         return redirect('/news');
 
@@ -102,18 +104,27 @@ class NewsController extends Controller
             'title'=>'required|min:3|max:255',
             'content'=>'required|min:3',
             'category'=>'required',
-            'img'=>'mimes:jpeg,jpg,png,gif|required|max:2000'
+            'img'=>'mimes:jpeg,jpg,png,gif|max:2000'
         ]);
 
         $news = News::find($id);
         $news->title = $request->title;
         $news->content = $request->content;
         $news->category_id = $request->category;
+
+         if($request->removeImg){
+            $news->img = null;
+        }
         
         $file = $request->file('img');
+        if($file){
         $fileName = $file->getClientOriginalName();
         $file->move(public_path() . '/img', $fileName);
         $news->img='/img/' . $fileName;
+        }
+
+
+
 
         $news->save();
         return redirect('/news');

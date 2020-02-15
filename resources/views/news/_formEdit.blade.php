@@ -38,6 +38,10 @@
 
 <div class="form-group">
 		<label for="img">Image:</label>
+		<img src="{{$news->img}}" class="thumbnail" alt="">
+		<a href="#" class="remove-img">Remove</a>
+		<input type="hidden" name="removeImg">
+
 		<input type="file" class="form-control @error('img') is-invalid @enderror" name="img" value="{{$news->img}}">
 
 		@error('img')
@@ -52,4 +56,16 @@
 
 
 
-	<button type="submit" class="btn btn-primary">Send</button>
+<button type="submit" class="btn btn-primary">Send</button>
+
+@section('css')
+<style>
+	h1{
+		text-align: center;
+	}
+	img{
+		width: 100px;
+	}
+	
+</style>
+@endsection

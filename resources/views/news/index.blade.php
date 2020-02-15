@@ -19,9 +19,12 @@
 			<td> {{$item->content}}</td>
 			{{-- $item->category  - название свойства такое же как название метода в модели News. Метод возвращает объект модели Category--}}
 			<td> {{$item->category->name}}</td>
+			{{--@if(item->img)--}}
 			<td> <img src="{{$item->img}}" alt=""></td>
+			{{--@endif--}}
 			<td>
-				<a href="/news/{{$item->id}}/edit">Edit</a>
+				
+				<a href="/news/{{$item->id}}/edit" >Edit</a>
 				<form action="/news/{{$item->id}}" method='POST'>
 					@method('DELETE')
 					@csrf
@@ -45,5 +48,6 @@
 	img{
 	width: 100px;
 	}
+	
 </style>
 @endsection
