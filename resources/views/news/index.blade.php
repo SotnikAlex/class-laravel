@@ -18,7 +18,7 @@
 			<td>{{$item->title}}</td>
 			<td> {{$item->content}}</td>
 			{{-- $item->category  - название свойства такое же как название метода в модели News. Метод возвращает объект модели Category--}}
-			<td> {{$item->category->name}}</td>
+			<td> {{$item->category ? $item->category->name : 'Uncategorized'}}</td>
 			{{--@if(item->img)--}}
 			<td> <img src="{{$item->img}}" alt=""></td>
 			{{--@endif--}}

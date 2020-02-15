@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category; //подключили модель
+use App\News; //подключили модель
+
 
 class CategoryController extends Controller
 {
@@ -60,7 +62,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //отображение данных категории
+        $category = Category::find($id);
+        //$news = News:: where('category_id', '=', $id)->get();
+        //$news = News:: where('category_id', '=', $id)->paginate(3);
+        $news = News:: where('category_id', '=', $id)->simplePaginate(3);
+        
+        return view('category.show', compact('category','news'));
     }
 
     /**

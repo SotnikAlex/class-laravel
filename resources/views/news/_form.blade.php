@@ -14,7 +14,7 @@
 			<textarea class="form-control @error('content') is-invalid @enderror" name="content">
 				{{$news->content}}
 			</textarea>
-
+			
 		@error('content')
     		<div class="text-danger">{{ $message }}</div>
 		@enderror

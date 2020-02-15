@@ -8,3 +8,4 @@ if (removeImg)
 		document.querySelector('[name="removeImg"]').value = 'remove';
 	});
 }
+ CKEDITOR.replace( 'content' );
