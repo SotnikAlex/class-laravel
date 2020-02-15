@@ -17,7 +17,8 @@
 			<td>{{$loop->iteration}}</td>
 			<td>{{$item->title}}</td>
 			<td> {{$item->content}}</td>
-			<td> {{$item->category_id}}</td>
+			{{-- $item->category  - название свойства такое же как название метода в модели News. Метод возвращает объект модели Category--}}
+			<td> {{$item->category->name}}</td>
 			<td> <img src="{{$item->img}}" alt=""></td>
 			<td>
 				<a href="/news/{{$item->id}}/edit">Edit</a>
